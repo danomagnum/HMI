@@ -32,3 +32,6 @@ Here's a button.  Buttons use the special classes `pb_momentary` and `pb_toggle`
 ```
 <button class="pb_toggle" data-target="plc/Program:Smoker.enable_autostart" data-press="1" data-release="0">Autostart</button>
 ```
+
+
+New drivers can be added to the drivers directory.  The CIP driver uses pylogix to communicate to allen bradley PLCs.  There is also a modbus driver but I don't remember if I ever tested it so it might or might not work.  There is also a "driver" that will execute simple ladder logic and there is a driver for "internal" hmi tags.
