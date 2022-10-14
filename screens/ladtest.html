@@ -1,0 +1,46 @@
+{% import 'widgetTask.html' as tasks with context%}
+
+<div class="sidebyside">
+{% for motor in 1,2,3,4 %}
+<div class="flexvert card parent autoload_value " data-target="builtin/Motor{{motor}}" style="width: 20%;">
+	<div class="titleblock">
+		<p>Motor {{motor}}</p>
+	</div>
+	<div class="sectionheader">
+		Control
+	</div>
+	<button class="pb_momentary child" data-target="start" data-press="1" data-release="0"> start</button>
+	<button class="pb_momentary child" data-target="stop" data-press="1" data-release="0"> stop</button>
+
+	<div class="sectionheader">
+		Status
+	</div>
+	<p>
+		<span class="subitem indicator child" data-target="stop" data-value="0"></span>
+		Stop button
+	</p>
+
+	<p>
+		<span class="subitem indicator" data-target="start" data-value="0"></span>
+		Start button
+	</p>
+
+	<p>
+		<span class="subitem indicator child" data-target="run" data-value="0"></span>
+		Running
+	</p>
+</div>
+
+{% endfor %}
+
+</div>
+<div style="width:100%; height:1px;display:inline-block;"></div>
+<div>
+Logic: <textarea class="autoload_value" data-target="LadTest/logic"></textarea>
+
+
+<p> Task deets </p>
+<div class="sidebyside">
+	{{ tasks.details("LadTest") }}
+</div>
+</div>

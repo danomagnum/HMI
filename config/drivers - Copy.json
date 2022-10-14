@@ -1,0 +1,86 @@
+{
+	"some_plc":
+	{
+		"driver":"CIP",
+	        "cfg":
+		{
+			"IP":"192.168.1.1",
+			"slot":"0"
+		}
+	},
+	"builtin":
+	{
+		"driver":"Internal",
+		"cfg":
+		{
+			"defaults":
+			{
+				"val1":"1",
+				"val2":"2",
+				"val3":"3",
+				"val4":"3",
+				"value":"12",
+				"alarmval": 0,
+				"array[0]":"0",
+				"array[1]":"1",
+				"incvalue":"0",
+				"incvalue2":"0",
+				"start": 0,
+				"stop": 0,
+				"run": 0,
+				"structure1":
+				{
+					"sub1": 123,
+					"sub2": 2
+				}
+			}
+
+		}
+	},
+	"task1":
+	{
+		"driver":"Task",
+		"cfg":
+		{
+			"period": 3000
+		}
+	},
+	"task2":
+	{
+		"driver":"CustomTask1",
+		"cfg":
+		{
+			"period": 500
+		}
+	},
+	"mb1":
+	{
+		"driver":"Modbus",
+		"cfg":
+		{
+			"address": "localhost",
+			"port": 5020
+		}
+	},
+	"Alarms":
+	{
+		"driver":"Alarms",
+		"cfg":
+		{
+			"period": 1000,
+			"alarms": [[ "builtin/val1", "Value1 Alarm", 0],
+			           [ "builtin/alarmval", "Test Off Initial Alarm", 0]]
+		}
+	},
+	"LadTest":
+	{
+		"driver":"Ladder",
+		"cfg":
+		{
+			"period": 1000,
+			"logic": "BST XIC builtin/start NXB XIC builtin/run BND XIO builtin/stop OTE builtin/run"
+		}
+	}
+
+
+}

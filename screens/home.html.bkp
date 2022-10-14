@@ -1,0 +1,30 @@
+{% import 'widget1.html' as w1 with context%}
+{% import 'widgetTask.html' as tasks with context%}
+
+<hr>
+<h1> Alarms:</h1>
+<div>
+	<ul class="autoload_value fullwidth logview"  data-target="Alarms/active" data-prefix="<li>" data-postfix="</li>"></ul>
+</div>
+<hr>
+<button class="pb_toggle" data-target="test_plc/Bool1" data-press="1" data-release="0"> 
+Mode
+</button>
+<br>
+<select class="autoload_value multistate_indicator" data-target="test_plc/Bool1" value="1">
+	<option value="false">Decrement </option>
+	<option value="true" class="ok">Increment</option>
+</select>
+<br>
+<button class="pb_momentary" data-target="test_plc/Bool2" data-press="1" data-release="0"> test alarm</button>
+<div class="autoload_value" data-target="test_plc/Dint1"></div>
+<div class="autoload_value" data-target="test_plc/Dint2"></div>
+
+<hr>
+
+<select class="autoload_value multistate_indicator" data-target="test_plc/Dint1" value="1">
+	<option value="1">test </option>
+	<option value="2" class="ok">test2</option>
+	<option value="3" class="fail">test3</option>
+	<option value="4" class="warn">test4</option>
+</select>

@@ -1,0 +1,27 @@
+{% macro analog_bar(value, max, high_high, high, low, low_low, min) -%}
+{% set range = max - min %}
+{% set hh_percent = 100 * (max - high_high) / range %}
+{% set h_percent =  100 * (high_high - high) / range %}
+{% set l_percent =  100 * (low - low_low) / range %}
+{% set ll_percent = 100 * (low_low - min) / range %}
+{% set ok_percent = 100 - hh_percent - h_percent - l_percent - ll_percent %}
+
+		<div>
+		<div id='hh' class='analog_hh' style="display:block; height: {{hh_percent}}%; position:relative;"></div>
+		<div id='h'  class='analog_h'  style="display:block; height: {{h_percent}}%;  position:relative;"></div>
+		<div id='ok' class='analog_ok' style="display:block; height: {{ok_percent}}%; position:relative;"><div></div></div>
+		<div id='l'  class='analog_l'  style="display:block; height: {{l_percent}}%;  position:relative"></div>
+		<div id='ll' class='analog_ll' style="display:block; height: {{ll_percent}}%; position:relative"></div>
+		</div>
+		<div style="width: 0; height: 0; border-style: solid; border-width: 20px 30px 20px 0; border-color: transparent #007bff transparent transparent; position: relative; top: -100%; left: 60%;"></div>
+		<ol>
+			<li>{{value}}</li>
+			<li>{{max}}</li>
+			<li>{{high_high}}</li>
+			<li>{{high}}</li>
+			<li>{{low}}</li>
+			<li>{{low_low}}</li>
+			<li>{{min}}</li>
+		</ol>
+		</div>
+{%- endmacro %}

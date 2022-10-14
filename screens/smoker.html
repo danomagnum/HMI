@@ -1,0 +1,68 @@
+{% import 'analog_widgets.html' as analog_widgets with context%}
+
+<div class="sidebyside">
+<div class="flexvert card" style="width: 20%;">
+	<div class="sectionheader">
+		Cooker
+	</div>
+	<canvas class="autoload_value graph" data-target="plc/Program:Smoker.Temp_Cooker" data-pencolor="#FF0000" width=200 height=200 ></canvas>
+	<div class="autoload_value" data-target="plc/Program:Smoker.Temp_Cooker"></div>
+</div>
+<div class="flexvert card" style="width: 20%;">
+	<div class="sectionheader">
+		Probes
+	</div>
+	<canvas class="autoload_value graph" data-target="plc/Program:Smoker.Temp_Probe1_EU" data-pencolor="#FF0000" width=200 height=200 ></canvas>
+	<div class="autoload_value" data-target="plc/Program:Smoker.Temp_Probe1_EU"></div>
+	<canvas class="autoload_value graph" data-target="plc/Program:Smoker.Temp_Probe2_EU" data-pencolor="#FF0000" width=200 height=200 ></canvas>
+	<div class="autoload_value" data-target="plc/Program:Smoker.Temp_Probe2_EU"></div>
+</div>
+
+<div class="flexvert card" style="width: 20%;">
+	<div class="sectionheader">
+		Burner
+	</div>
+	<canvas class="autoload_value graph" data-target="plc/Program:Smoker.Temp_Burner" data-pencolor="#FF0000" width=200 height=200 ></canvas>
+	<div class="autoload_value" data-target="plc/Program:Smoker.Temp_Burner"></div>
+</div>
+
+<div class="flexvert card" style="width: 20%;">
+	<div class="autoload_value" data-target="plc/Program:Smoker.hmi_test"></div>
+	<select class="autoload_value multistate_indicator" data-target="plc/Program:Smoker.sts_Smoker_Module_RUnning" value="false">
+		<option value="false" class="fail">Offline </option>
+		<option value="true" class="ok">Connected</option>
+	</select>
+
+	<select class="autoload_value multistate_indicator" data-target="plc/Program:Smoker.state" value="false">
+		<option value="0">Off</option>
+		<option value="10">Purge</option>
+		<option value="20">Ignite</option>
+		<option value="30">Ramp Up</option>
+		<option value="40">PID Hold</option>
+		<option value="50">Ramp Down</option>
+		<option value="100">Shutdown</option>
+	</select>
+</div>
+
+
+<div class="flexvert card" style="width: 20%;">
+	<span class="label">Burner SP</span>
+	<input class="autoload_value" data-target="plc/Program:Smoker.temp_sp", value=0>
+	<span class="label">Cooker SP</span>
+	<input class="autoload_value" data-target="plc/Program:Smoker.cooker_temp_sp", value=0>
+	<hr style='width:90%; margin-top:30px'>
+	<span class="label">Autostart</span>
+	<button class="pb_toggle" data-target="plc/Program:Smoker.enable_autostart" data-press="1" data-release="0">Autostart</button>
+	<select class="autoload_value multistate_indicator" data-target="plc/Program:Smoker.enable_autostart" value="false">
+		<option value="false">Off</option>
+		<option value="true" class="ok">On</option>
+	</select>
+	<span class="label">Autostart Time</span>
+	<div>
+		<input class="autoload_value" data-target="plc/Program:Smoker.autostart_hour", value=0, style='float:left; width:2em'>
+		<span style='float:left'>:</span>
+		<input class="autoload_value" data-target="plc/Program:Smoker.autostart_minute", value=0, style='float:left; width:2em'>
+	</div>
+</div>
+
+</div>

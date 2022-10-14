@@ -1,0 +1,42 @@
+{% macro details(taskname) -%}
+<div class="flexvert card" style="width: 30%">
+	<div class="titleblock">
+		<p>Task: {{taskname}}</p>
+	</div>
+	<div class="sectionheader">
+		Status
+	</div>
+	<div class="sectiondata">
+		<select class="autoload_value multistate_indicator" data-target="{{taskname}}/paused" value="true">
+			<option value="true" class="warn">Paused</option>
+			<option value="false">UnPaused</option>
+		</select>
+		<select class="autoload_value multistate_indicator" data-target="{{taskname}}/status" value="0">
+			<option value="0">Running</option>
+			<option value="1" class="warn">Paused</option>
+			<option value="2" class="fail">Faulted</option>
+			<option value="3" class="fail">Faulted, Paused</option>
+		</select>
+	</div>
+	<div class="sectionheader">
+		Timing
+	</div>
+	<div class="sectiondata">
+		<p>Last Execution Time:</p>
+		<p class="autoload_value" data-target="{{taskname}}/timing_last"></p>
+		<p>Max Execution Time:</p>
+		<p class="autoload_value" data-target="{{taskname}}/timing_max"></p>
+	</div>
+	<div class="sectionheader">
+		Faults
+	</div>
+	<div class="sectiondata">
+		<button class="pb_momentary" data-target="{{taskname}}/fault_reset" data-press="1" data-release="0"> Reset Faults</button>
+		<button class="pb_momentary" data-target="{{taskname}}/log_clear" data-press="1" data-release="0"> Clear Log</button>
+<!--		<textarea class="autoload_value fullwidth"  style="height: 20em;" data-target="{{taskname}}/log" data-seperator="
+"></textarea>
+-->
+		<div class="autoload_value fullwidth logview"  data-target="{{taskname}}/log" data-prefix="<div class='sectiondata'>" data-postfix="</div>"></div>
+	</div>
+</div>
+{%- endmacro %}

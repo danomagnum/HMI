@@ -1,0 +1,115 @@
+.multistate_indicator {
+	background: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	color: #000;
+	border: 1px solid #EEE;
+}
+
+.ok {
+	background: #9F9 !important;
+}
+.warn {
+	background: #EE0 !important;
+}
+.fail {
+	background: #F55 !important;
+	color: #fff !important;
+}
+.flexvert {
+	display: flex;
+	flex-direction: column;
+}
+.fullwidth {
+	width: 100%;
+}
+.titleblock {
+	background: #1976d2;
+	color: #fff;
+	margin: 0px !important;
+	padding-left: 5px !important;
+	font-size: larger;
+}
+.card {
+	background: #FFF;
+	margin: 10px;
+}
+
+.card * {
+	margin-top: 5px;
+}
+
+body {
+	background: #EEE;
+}
+
+.sidebyside {
+	display: flex;
+	flex-direction: row;
+}
+
+.sectionheader {
+	color: #000;
+	font-size: larger;
+	padding-left: 5px !important;
+}
+
+.sectiondata {
+	color: #000;
+	font-size: medium;
+	padding-left: 10px !important;
+	border-bottom: 1px solid #DDD;
+}
+
+.logview {
+	overflow-y: scroll;
+	max-height: 20em;
+}
+
+button {
+	min-height: 1in;
+	min-width: 1in;
+}
+
+.indicator{
+	height: 0.25in;
+	width: 0.25in;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.indicator[data-value="0"] {
+ 	background-color: #bbb;
+}
+.indicator[data-value="1"] {
+ 	background-color: #9F9;
+}
+
+.indicator[data-value~="false"] {
+ 	background-color: #bbb;
+}
+.indicator[data-value~="true"] {
+ 	background-color: #9F9;
+}
+
+.analog_hh {
+	background: #B66 !important;
+}
+.analog_h {
+	background: #DD8 !important;
+}
+.analog_ok {
+	background: #9F9 !important;
+}
+.analog_l {
+	background: #DD8 !important;
+}
+.analog_ll {
+	background: #B66 !important;
+}
+
+.footer {
+	bottom: 0px;
+	position: fixed;
+}

@@ -1,0 +1,55 @@
+<div class="sidebyside">
+<div class="flexvert card" style="width: 20%;">
+	<div class="sectionheader">
+		Shed
+	</div>
+	<span>RH %</span>
+	<canvas class="autoload_value graph" data-target="plc/Program:Shed.RH1" data-pencolor="#FF0000" width=200 height=200 ></canvas>
+	<div class="autoload_value" data-target="plc/Program:Shed.RH1"></div>
+
+	<span>Temp</span>
+	<canvas class="autoload_value graph" data-target="plc/Program:Shed.Temp1" data-pencolor="#FF0000" width=200 height=200 ></canvas>
+	<div class="autoload_value" data-target="plc/Program:Shed.Temp1"></div>
+</div>
+
+
+<div class="flexvert card" style="width: 20%;">
+	<div class="sectionheader">
+		Outside
+	</div>
+	<span>RH %</span>
+	<canvas class="autoload_value graph" data-target="plc/Program:Shed.RH2" data-pencolor="#FF0000" width=200 height=200 ></canvas>
+	<div class="autoload_value" data-target="plc/Program:Shed.RH2"></div>
+
+	<span>Temp</span>
+	<canvas class="autoload_value graph" data-target="plc/Program:Shed.Temp2" data-pencolor="#FF0000" width=200 height=200 ></canvas>
+	<div class="autoload_value" data-target="plc/Program:Shed.Temp2"></div>
+</div>
+
+<div class="flexvert card" style="width: 20%;">
+	<div class="sectionheader">
+		Fan
+	</div>
+	<span>Fan Controller State:</span>
+	<select class="autoload_value multistate_indicator" data-target="plc/Program:Shed.fan_state" value="0">
+		<option value="0">Standby</option>
+		<option value="10" class="ok">Running</option>
+		<option value="20" class="warn">Restart Delay</option>
+	</select>
+
+
+
+	<span>Fan Status:</span>
+	<select class="autoload_value multistate_indicator" data-target="plc/Program:Shed.do_fan_run" value="false">
+		<option value="false">Fan Off</option>
+		<option value="true" class="ok">Fan Running</option>
+	</select>
+
+
+	<button class="pb_momentary" data-target="plc/Program:Shed.hmi_start" >Start</button>
+	<button class="pb_momentary" data-target="plc/Program:Shed.hmi_stop" >Stop</button>
+</div>
+
+
+
+</div>

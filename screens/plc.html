@@ -1,0 +1,74 @@
+{% import 'analog_widgets.html' as analog_widgets with context%}
+
+<div class="sidebyside">
+<div class="flexvert card" style="width: 20%;">
+	<div class="sectionheader">
+		Control
+	</div>
+	<button class="pb_momentary " data-target="plc/Program:MainProgram.hmi_start" data-press="1" data-release="0"> start</button>
+	<button class="pb_momentary " data-target="plc/Program:MainProgram.hmi_stop" data-press="1" data-release="0"> stop</button>
+
+	<div class="sectionheader">
+		Status
+	</div>
+	<p>
+		<span class="subitem autoload_value indicator " data-target="plc/Program:MainProgram.hmi_stop" data-value="0"></span>
+		Stop button
+	</p>
+
+	<p>
+		<span class="subitem autoload_value indicator" data-target="plc/Program:MainProgram.hmi_start" data-value="0"></span>
+		Start button
+	</p>
+
+	<p>
+		<span class="subitem autoload_value indicator " data-target="plc/Program:MainProgram.sts_running" data-value="0"></span>
+		Running
+	</p>
+
+</div>
+
+<div class="flexvert card" style="width: 20%;">
+	<div class="sectionheader">
+		Motion
+	</div>
+	<button class="pb_momentary " data-target="plc/Program:MainProgram.hmi_Move1" data-press="1" data-release="0"> Pos 1</button>
+	<button class="pb_momentary " data-target="plc/Program:MainProgram.hmi_Move2" data-press="1" data-release="0"> Pos 2</button>
+
+	<div class="sectionheader">
+		Status
+	</div>
+	<p>
+		<span class="subitem autoload_value indicator " data-target="plc/Program:MainProgram.testAxis_Move1.IP" data-value="0"></span>
+		Move 1 In Progress
+	</p>
+
+	<p>
+		<span class="subitem autoload_value indicator " data-target="plc/Program:MainProgram.testAxis_Move1.PC" data-value="0"></span>
+		Move 1 Complete
+	</p>
+	<p>
+		<span class="subitem autoload_value indicator " data-target="plc/Program:MainProgram.testAxis_Move2.IP" data-value="0"></span>
+		Move 2 In Progress
+	</p>
+
+	<p>
+		<span class="subitem autoload_value indicator " data-target="plc/Program:MainProgram.testAxis_Move2.PC" data-value="0"></span>
+		Move 2 Complete
+	</p>
+
+
+
+</div>
+
+
+
+<div class="overlay">
+	<canvas class="autoload_value graph" data-target="plc/TestAxis.ActualPosition" data-pencolor="#FF0000" width=200 height=200 style="position:absolute"></canvas>
+</div>
+
+<div style="display:block; height:200px; width: 50px; border: 1px solid grey">
+{{ analog_widgets.analog_bar(100, 200, 150, 125, 75, 50, 0) }}
+</div>
+
+</div>

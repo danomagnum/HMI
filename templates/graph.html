@@ -1,0 +1,74 @@
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+<html>
+<head>
+<title>{{ title }}</title>
+</head>
+
+<body>
+<input type="text" id="val" value=100 onchange="javascript:shiftImage">
+<a href="javascript:doIt()">shift 25 pixels to the left using `translate`</a><br>
+<a href="javascript:shiftImage()">shift 25 pixels to the left using `getImageData/putImageData`</a><br>
+<a href="javascript:redraw()">Redraw</a>
+<a href="javascript:line()">Line</a>
+<canvas id="canvas" width="600" height="200"></canvas>
+</body>
+<script type="text/javascript" >
+
+
+
+
+var xOff = 0;
+var last_val = 100;
+
+
+var redraw = function() {
+	var canvas = document.getElementById( "canvas" );
+var ctx = canvas.getContext( "2d" );
+        ctx.clearRect(0, 0, 600, 200);
+        ctx.save();
+        ctx.translate(xOff, 0);
+
+   
+        ctx.restore();
+};
+
+    
+var doIt = function() {
+    xOff -= 25;
+    redraw();
+}
+    
+    redraw();
+
+var shiftImage = function() {
+	var box = document.getElementById( "val" );
+	var boxval = box.value;
+	var canvas = document.getElementById( "canvas" );
+	var ctx = canvas.getContext( "2d" );
+	shiftContext(ctx, 600, 200, -25, 0);  
+	ctx.beginPath();
+	ctx.moveTo(600 - 25, last_val);
+	ctx.lineTo(600, boxval);
+	ctx.stroke();
+	last_val = boxval;
+	  
+    };
+   
+window.tick = function() {
+	var canvas = document.getElementById( "canvas" );
+var ctx = canvas.getContext( "2d" );
+      shiftContext(ctx, 600, 200, -25, 0);   
+    }
+	
+window.line = function() {
+	var box = document.getElementById( "val" );
+	var canvas = document.getElementById( "canvas" );
+	var ctx = canvas.getContext( "2d" );
+
+	ctx.moveTo(0, 0);
+	ctx.lineTo(100, 100);
+
+}
+
+</script>
+</html>

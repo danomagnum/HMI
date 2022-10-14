@@ -1,0 +1,34 @@
+This example is accessing the sub-elements of the tag builtin/structure1.  Because the elements within a block with a <b>parent</b> class have a <b>child</b> class in addition to the pb_toggle or pb_momentary class, they automatically prepend the parent tag to the tag they are configured for.
+
+
+<hr>
+<div class="autoload_value parent" data-target="builtin/structure1">
+
+This tag accesses "builtin/structure1/sub1"
+<div class="subitem" data-target="sub1"></div>
+And this button changes it from 12 to 34 when pressed
+<div>
+<button class="pb_momentary child" data-target="sub1" data-press="12" data-release="34"> Maintained Button Text</button>
+</div>
+<hr>
+
+<div>
+This indicator shows the status of "builtin/structure/sub1"
+<br>
+<select class="subitem multistate_indicator" data-target="sub2" value="1">
+	<option value="1">test </option>
+	<option value="2" class="ok">test2</option>
+	<option value="3" class="fail">test3</option>
+	<option value="4" class="warn">test4</option>
+</select>
+<br>
+And these buttons change it
+<br>
+<button class="pb_toggle child" data-target="sub2" data-press="1" data-release="1"> Show State 1 = Test</button>
+<button class="pb_toggle child" data-target="sub2" data-press="2" data-release="2"> Show State 2 = test2 / OK</button>
+<button class="pb_toggle child" data-target="sub2" data-press="3" data-release="3"> Show State 3 = test3 / fail</button>
+<button class="pb_toggle child" data-target="sub2" data-press="4" data-release="4"> Show State 4 = test4 / warn</button>
+</div>
+
+</div>
+

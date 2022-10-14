@@ -1,0 +1,53 @@
+{
+	"test_plc":
+	{
+		"driver":"CIP",
+	        "cfg":
+		{
+			"IP":"10.81.252.170"
+		}
+	},
+	"builtin":
+	{
+		"driver":"Internal",
+		"cfg":
+		{
+			"defaults":
+			{
+				"val1":"1",
+				"val2":"2",
+				"val3":"3",
+				"val4":"3",
+				"value":"12",
+				"alarmval": 0,
+				"array[0]":"0",
+				"array[1]":"1",
+				"incvalue":"0",
+				"incvalue2":"0",
+				"start": 0,
+				"stop": 0,
+				"run": 0,
+				"structure1":
+				{
+					"sub1": 123,
+					"sub2": 2
+				}
+			}
+
+		}
+	},
+	
+	"Alarms":
+	{
+		"driver":"Alarms",
+		"cfg":
+		{
+			"period": 1000,
+			"alarms": [[ "builtin/val1", "Value1 Alarm", 0],
+			           [ "builtin/alarmval", "Test Off Initial Alarm", 0]]
+		}
+	}
+
+
+
+}
