@@ -3,6 +3,7 @@ import pylogix
 import datetime
 from collections import deque
 import string
+import threading
 
 class CIP(BaseDriver):
   def __init__(self, cfg):
@@ -13,9 +14,10 @@ class CIP(BaseDriver):
     self.comm_active = False
     self.read_queue = deque()
     self.write_queue = deque()
+    self.on_scan = {}
+
   def read(self, tag):
     result = None
-    #print tag
     if tag in self.tags:
       result = self.tags[tag].Value
     
@@ -50,7 +52,11 @@ class CIP(BaseDriver):
     if read_list is None:
       read_list = list(self.read_queue)
       self.read_queue.clear()
+    new_time = datetime.datetime.now() + datetime.timedelta(minutes=1)
+    for t in read_list:
+        self.on_scan[t] = new_time
     
+    read_list = list(self.on_scan.keys())
     if len(read_list) > 1:
       print("reading multiple")
       try:
@@ -62,10 +68,19 @@ class CIP(BaseDriver):
     else:
       print("reading single")
       self.single_read(read_list)
+
+    limit = datetime.datetime.now()
+    for tag in read_list:
+        try:
+            if self.on_scan[tag] < limit:
+                del(self.on_scan[tag])
+        except:
+            pass
+            
       
   
   def tick(self, driverlist):
-    if self.read_queue:
+    if self.on_scan or self.read_queue:
         self.bulk_read()
     
     write_list = list(self.write_queue)
