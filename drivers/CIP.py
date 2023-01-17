@@ -69,6 +69,7 @@ class CIP(BaseDriver):
       print("reading single")
       self.single_read(read_list)
 
+
     limit = datetime.datetime.now()
     for tag in read_list:
         try:
